@@ -1,13 +1,14 @@
-package com.uce.edu.demo.consultorio;
+package com.uce.edu.demo.evento;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class Paciente {
-	
+public class Asistente {
+
+
 	private String nombre;
 	private int edad;
-	
+	private int cedula;
 	
 	//SET Y GET
 	public String getNombre() {
@@ -22,8 +23,13 @@ public class Paciente {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
+	public int getCedula() {
+		return cedula;
+	}
+	public void setCedula(int cedula) {
+		this.cedula = cedula;
+	}
 	
-
 	
 	
 	
