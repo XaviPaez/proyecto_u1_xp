@@ -1,12 +1,25 @@
 package com.uce.edu.demo;
 
+import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class ProyectoU1XpApplication implements CommandLineRunner {
+import com.uce.edu.demo.consultorio.CitaMedica;
+import com.uce.edu.demo.consultorio.CitaMedica2;
 
+@SpringBootApplication
+
+public class ProyectoU1XpApplication implements CommandLineRunner {
+	
+//1)@Autowired
+//	private CitaMedica cita;
+	
+	@Autowired
+	private CitaMedica2 cita;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1XpApplication.class, args);
 	}
@@ -15,6 +28,10 @@ public class ProyectoU1XpApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("Mi primer proyecto Spring Framework");
+		
+		String respuesta=this.cita.agendar(LocalDateTime.now(), "Xavier", "Paez", 22, "Quito", "Sebastian", 23);
+		System.out.println(respuesta);
+		
 	}
 
 }
