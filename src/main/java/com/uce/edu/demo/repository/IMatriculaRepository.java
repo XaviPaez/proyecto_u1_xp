@@ -6,9 +6,9 @@ public interface IMatriculaRepository {
 
 	public void insertar(Matricula m);
 
-	public Matricula buscar(String nombre);
+	public Matricula buscar(String numero);
 
 	public void actualizar(Matricula m);
 
-	public void eliminar(String nombre);
+	public void eliminar(String numero);
 }

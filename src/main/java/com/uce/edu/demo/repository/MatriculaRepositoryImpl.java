@@ -19,7 +19,7 @@ public class MatriculaRepositoryImpl implements IMatriculaRepository {
 		// TODO Auto-generated method stub
 		System.out.println("Se ha buscado en la base la matricula: "+ nombre);
 		Matricula m=new Matricula();
-
+		m.setNumero(nombre);
 		return m;
 	}
 
