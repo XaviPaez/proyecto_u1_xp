@@ -11,29 +11,47 @@ import com.uce.edu.demo.banco.modelo.Deposito;
 import com.uce.edu.demo.banco.repository.IDepositoRepository;
 
 @Service
-public class DepositoServiceImpl implements IDepositoService{
-	
+public class DepositoServiceImpl implements IDepositoService {
+
 	@Autowired
 	private ICuentaBancariaService bancariaService;
 	@Autowired
 	private IDepositoRepository depositoRepository;
-	
 
 	@Override
 	public void realizarDeposito(String numeroCtaDestino, BigDecimal monto) {
 		// TODO Auto-generated method stub
-		
-		CuentaBancaria ctaDestino=this.bancariaService.buscar(numeroCtaDestino);
-		BigDecimal saldoCtaDestino=ctaDestino.getSaldo();
-		BigDecimal saldoFinal=saldoCtaDestino.add(monto);
+		CuentaBancaria ctaDestino = this.bancariaService.buscar(numeroCtaDestino);
+		BigDecimal saldoCtaDestino = ctaDestino.getSaldo();
+		BigDecimal saldoFinal = saldoCtaDestino.add(monto);
 		ctaDestino.setSaldo(saldoFinal);
 		this.bancariaService.actualizar(ctaDestino);
-		
-		Deposito deposito=new Deposito();
+
+		Deposito deposito = new Deposito();
 		deposito.setFecha(LocalDateTime.now());
 		deposito.setNumeroCuentaDestino(numeroCtaDestino);
 		deposito.setMonto(monto);
-		this.bancariaService.actualizar(ctaDestino);
+		this.depositoRepository.insertarDeposito(deposito);
+
+	}
+
+	@Override
+	public void actualizarDeposito(Deposito d) {
+		// TODO Auto-generated method stub
+		this.depositoRepository.actualizar(d);
+	}
+
+	@Override
+	public Deposito buscarDeposito(String identidicador) {
+		// TODO Auto-generated method stub
+		return this.depositoRepository.buscar(identidicador);
+			
+	}
+
+	@Override
+	public void eliminarDeposito(String identificador) {
+		// TODO Auto-generated method stub
+		this.depositoRepository.eliminar(identificador);
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.banco.modelo.CuentaBancaria;
+import com.uce.edu.demo.banco.modelo.Deposito;
 import com.uce.edu.demo.banco.modelo.Transferencia;
 import com.uce.edu.demo.banco.repository.ITransferenciaRepository;
 
@@ -44,6 +45,27 @@ public class TransferenciaServiceImpl implements ITransferenciaService {
 		t.setFechaTransferencia(LocalDateTime.now());
 		
 		this.iTransferenciaRepository.insertar(t);
+	}
+
+
+	@Override
+	public void actualizarTransferencia(Transferencia t) {
+		// TODO Auto-generated method stub
+		this.iTransferenciaRepository.actualizar(t);
+		}
+
+
+	@Override
+	public Transferencia buscarTransferencia(String identidicador) {
+		// TODO Auto-generated method stub
+		return this.iTransferenciaRepository.buscar(identidicador);
+	}
+
+
+	@Override
+	public void eliminarTransferencia(String identificador) {
+		// TODO Auto-generated method stub
+		this.iTransferenciaRepository.eliminar(identificador);
 	}
 
 }

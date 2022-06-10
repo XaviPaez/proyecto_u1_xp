@@ -9,6 +9,13 @@ import com.uce.edu.demo.banco.modelo.CuentaBancaria;
 @Repository
 public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository {
 
+
+	@Override
+	public void insertar(CuentaBancaria c) {
+		// TODO Auto-generated method stub
+		System.out.println("Se ha insertado en la base de datos la cuenta bancaria: "+ c);
+	}
+	
 	@Override
 	public void actualizar(CuentaBancaria c) {
 		//Aqui hay que construir los SQL´s
@@ -23,6 +30,12 @@ public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository {
 		cta.setNumero(numero);
 		cta.setSaldo(new BigDecimal(100));
 		return cta;
+	}
+
+	@Override
+	public void eliminar(String identidicador) {
+		// TODO Auto-generated method stub
+		System.out.println("Se ha eliminado la cuenta bancaria: "+ identidicador);
 	}
 
 }
