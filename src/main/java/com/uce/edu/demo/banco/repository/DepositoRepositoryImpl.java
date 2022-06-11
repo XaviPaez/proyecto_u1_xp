@@ -1,11 +1,16 @@
 package com.uce.edu.demo.banco.repository;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.demo.banco.modelo.CuentaBancaria;
 import com.uce.edu.demo.banco.modelo.Deposito;
+import com.uce.edu.demo.banco.modelo.Retiro;
+import com.uce.edu.demo.banco.modelo.Transferencia;
 
 @Repository
 public class DepositoRepositoryImpl implements IDepositoRepository {
@@ -37,6 +42,29 @@ public class DepositoRepositoryImpl implements IDepositoRepository {
 	public void eliminar(String identidicador) {
 		// TODO Auto-generated method stub
 		System.out.println("Se ha eliminado el deposito: "+ identidicador);
+	}
+
+	@Override
+	public List<Deposito> consultar(String cuenta, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		// TODO Auto-generated method stub
+		List<Deposito> listaDepositos=new ArrayList<>();
+		Deposito depo1=new Deposito();
+		depo1.setFecha(LocalDateTime.of(2021, 2, 10, 8, 50, 2));
+		depo1.setMonto(new BigDecimal(20));
+		depo1.setNumeroCuentaDestino("2345");
+		
+		listaDepositos.add(depo1);
+		
+		Deposito depo2=new Deposito();
+		depo2.setFecha(LocalDateTime.of(2021, 3, 15, 53, 2));
+		depo2.setMonto(new BigDecimal(50));
+		depo2.setNumeroCuentaDestino("1234");
+		
+		listaDepositos.add(depo2);
+		
+		List<Retiro> listareRetiros=new ArrayList<>();
+	
+		return null;
 	}
 
 }

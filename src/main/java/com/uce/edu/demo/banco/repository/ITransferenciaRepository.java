@@ -1,6 +1,9 @@
 package com.uce.edu.demo.banco.repository;
 
-import com.uce.edu.demo.banco.modelo.CuentaBancaria;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import com.uce.edu.demo.banco.modelo.Transferencia;
 
 public interface ITransferenciaRepository {
@@ -12,5 +15,7 @@ public interface ITransferenciaRepository {
 	public  Transferencia buscar(String numero);
 
 	public void eliminar(String identidicador);
+	
+	public List<Transferencia> consultar(String cuenta, LocalDateTime fechaInicio, LocalDateTime fechaFin);
 
 }
