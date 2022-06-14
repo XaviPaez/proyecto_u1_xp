@@ -34,8 +34,9 @@ public class ProyectoU1XpApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 
-		BigDecimal interes= this.bancaria.calcularInteres("1231");
-		System.out.println(interes);
+		BigDecimal interes= this.bancaria.calcularInteres("1235");
+		System.out.println("interes: "+interes);
+		
 		
 		
 	

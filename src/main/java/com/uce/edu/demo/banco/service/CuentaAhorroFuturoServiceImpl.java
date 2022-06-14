@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 import com.uce.edu.demo.banco.modelo.CuentaBancaria;
 
 @Service
-@Qualifier("corriente")
-public class CuentaBancariaCorrienteServiceImpl implements ICuentaBancariaService {
+@Qualifier("ahorrofuturo")
+public class CuentaAhorroFuturoServiceImpl implements ICuentaBancariaService{
 
-	
 	@Override
 	public void insertar(CuentaBancaria c) {
 		// TODO Auto-generated method stub
@@ -39,12 +38,11 @@ public class CuentaBancariaCorrienteServiceImpl implements ICuentaBancariaServic
 	@Override
 	public BigDecimal calcularInteres(String numeroCta, BigDecimal saldo) {
 		// TODO Auto-generated method stub
-		//Codigo duplicado lo solucionamos con una fachada, gestor
-	//	CuentaBancaria cta=this.bancariaRepository.buscar(numeroCta);
-
-		//BigDecimal saldo=null;
-		BigDecimal interes=saldo.multiply(new BigDecimal(15)).divide(new BigDecimal(100));
+		BigDecimal interes = new BigDecimal(360).multiply(new BigDecimal(12)).divide(new BigDecimal(100));
+		interes = interes.add(saldo.divide(new BigDecimal(10)));
+		System.out.println("Cuenta ahorro futuro");
 		return interes;
 	}
 
+	
 }
